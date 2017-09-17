@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<DamageDef Name="ForceDamageBase" Abstract="True">
+		<!--<workerClass>CombinationTraps.DamageWorker_ForceOutside</workerClass>-->
+	    <externalViolence>true</externalViolence>
+	    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+	    <hasChanceToAdditionallyDamageInnerSolidParts>true</hasChanceToAdditionallyDamageInnerSolidParts>
+	</DamageDef>
+
+	<DamageDef ParentName="ForceDamageBase">
+	    <defName>Pull</defName>
+	    <label>pulll</label>
+	    <deathMessage>{0} has been beaten to death.</deathMessage>
+	    <additionalHediffs>
+	    	<li Class="DamageDefAdditionalHediff">
+	    		<hediff>ForceOutside</hediff>
+	    		<severityPerDamageDealt>0.1</severityPerDamageDealt>
+	    	</li>
+	    </additionalHediffs>
+	    <impactSoundType>Blunt</impactSoundType>
+	    <armorCategory>Blunt</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="ForceDamageBase">
+	    <defName>Push</defName>
+	    <label>push</label>
+	    <deathMessage>{0} has been beaten to death.</deathMessage>
+	    <additionalHediffs>
+	    	<li Class="DamageDefAdditionalHediff">
+	    		<hediff>ForceOutside</hediff>
+	    		<severityPerDamageDealt>0.1</severityPerDamageDealt>
+	    	</li>
+	    </additionalHediffs>
+	    <impactSoundType>Blunt</impactSoundType>
+	    <armorCategory>Blunt</armorCategory>
+	</DamageDef>
+  
+</Defs>

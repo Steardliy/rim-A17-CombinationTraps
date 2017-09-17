@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef Name="BuildingCombinationTrapBase" ParentName="BuildingBase" Abstract="True">
+		<altitudeLayer>Building</altitudeLayer>
+    	<drawerType>RealtimeOnly</drawerType>
+    	<rotatable>true</rotatable>
+    	<tickerType>Normal</tickerType>
+    	<stealable>false</stealable>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingCombinationTrapBase">
+    <defName>TrapPusher</defName>
+    <label>push trap</label>
+    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/PusherArmed</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Beauty>-4</Beauty>
+      <TrapMeleeDamage>1</TrapMeleeDamage>
+      <TrapSpringChance>0.8</TrapSpringChance>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/PusherUnarmed</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <shaderType>Cutout</shaderType>
+      </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="BuildingCombinationTrapBase">
+    <defName>TrapPuller</defName>
+    <label>pull trap</label>
+    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <thingClass>CombinationTraps.Building_TrapPuller</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/PullerArmed</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Beauty>-4</Beauty>
+      <TrapMeleeDamage>1</TrapMeleeDamage>
+      <TrapSpringChance>0.8</TrapSpringChance>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/PullerUnarmed</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <shaderType>Cutout</shaderType>
+      </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+
+</Defs>

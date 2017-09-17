@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HediffDefs>
+
+	<HediffDef Name="ForceOutsideBase" Abstract="True">
+		<hediffClass>CombinationTraps.Hediff_ForceOutside</hediffClass>
+	    <tendable>false</tendable>
+	    <displayWound>true</displayWound>
+	</HediffDef>
+	
+	<HediffDef ParentName="ForceOutsideBase">
+	    <defName>ForceOutside</defName>
+	    <label>force outside</label>
+	    <defaultLabelColor>(0.5, 0.5, 0.5, 1)</defaultLabelColor>
+	    <initialSeverity>15</initialSeverity>
+	    <comps>
+		      <li Class="CombinationTraps.HediffCompProperties_TickInterval">
+		      	<interval>3</interval>
+		      </li>
+	    </comps>
+  </HediffDef>
+
+</HediffDefs>
