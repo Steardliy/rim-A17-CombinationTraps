@@ -13,36 +13,39 @@ namespace CombinationTraps
     {
         protected Vector3 origin;
         protected Vector3 direction;
-        private HediffComp_TickInterval compInterval;
+        private int tickInterval;
 
         public override bool TryMergeWith(Hediff other)
         {
             base.TryMergeWith(other);
             return false;
         }
-        public override void PostMake()
-        {
-            base.PostMake();
-            this.compInterval = this.TryGetComp<HediffComp_TickInterval>();
-            if (this.compInterval == null)
-            {
-                Log.Warning(DebugLog.Sign() + "compInterval was null.");
-            }
-        }
 
         public override void PostAdd(DamageInfo? dinfo)
         {
             base.PostAdd(dinfo);
             Pawn p = base.pawn;
-            base.Severity = base.def.initialSeverity;
 
-            float angle = dinfo.HasValue ? dinfo.Value.Angle : 0;
+            float angle;
+            if (dinfo.HasValue)
+            {
+                DamageInfo info = dinfo.Value;
+                this.tickInterval = Mathf.RoundToInt(1f / (info.Instigator.GetStatValue(CT_StatDefOf.Momentum)));
+                base.Severity = info.Instigator.GetStatValue(CT_StatDefOf.ImpactForce);
+                angle = info.Angle;
+            }
+            else
+            {
+                this.tickInterval = 1;
+                base.Severity = base.def.initialSeverity;
+                angle = 0;
+            }
+
             this.origin = p.TrueCenter();
             this.direction = this.Vector3Round(angle.ToQuat() * Vector3.forward);
 
             p.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
-            int tick = compInterval != null ? compInterval.TickInterval : 1;
-            p.stances.SetStance(new Stance_Cooldown((int)base.Severity * tick, p, null));
+            p.stances.SetStance(new Stance_Cooldown((int)base.Severity * this.tickInterval, p, null));
         }
 
         public override void Tick()
@@ -53,13 +56,13 @@ namespace CombinationTraps
                 this.Severity = 0;
                 return;
             }
-            if (this.Severity >= 0 && (compInterval == null || compInterval.DoTick()))
+            if (this.Severity >= 0 && this.DoTick())
             {
                 base.pawn.Position += this.direction.ToIntVec3();
                 base.pawn.pather.Notify_Teleported_Int();
                 if (base.pawn.jobs != null && base.pawn.jobs.curJob != null)
                 {
-                    base.pawn.jobs.EndCurrentJob(JobCondition.InterruptForced, true);
+                    base.pawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
                 }
                 this.Severity--;
             }
@@ -79,9 +82,9 @@ namespace CombinationTraps
         {
             return new Vector3(Mathf.Round(v.x), Mathf.Round(v.y), Mathf.Round(v.z));
         }
-        private bool IsRange(float a, FloatRange range)
+        private bool DoTick()
         {
-            return a >= range.min && a <= range.max;
+            return Find.TickManager.TicksGame % this.tickInterval == 0;
         }
     }
 }

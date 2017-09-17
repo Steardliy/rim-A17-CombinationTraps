@@ -48,14 +48,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buildings\Building_TrapContinue.cs" />
+    <Compile Include="Buildings\Building_TrapRange.cs" />
     <Compile Include="Buildings\Building_TrapPuller.cs" />
     <Compile Include="Buildings\Building_TrapPusher.cs" />
     <Compile Include="Debug\DebugLog.cs" />
-    <Compile Include="Hediffs\HediffComps\HediffCompProperties_TickInterval.cs" />
-    <Compile Include="Hediffs\HediffComps\HediffComp_TickInterval.cs" />
     <Compile Include="Hediffs\Hediff_ForceOutside.cs" />
-    <Compile Include="Misc\DamageDefOf.cs" />
+    <Compile Include="Misc\CT_DefOf.cs" />
+    <Compile Include="Buildings\PlaceWorkers\PlaceWorker_WallTrap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

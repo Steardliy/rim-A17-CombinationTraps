@@ -13,4 +13,12 @@ namespace CombinationTraps
         public static DamageDef Push;
         public static DamageDef Pull;
     }
+
+    [DefOf]
+    public static class CT_StatDefOf
+    {
+        public static StatDef ImpactForce;
+        public static StatDef Momentum;
+        public static StatDef TrapRange;
+    }
 }
