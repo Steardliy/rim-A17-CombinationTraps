@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<DamageDef Name="ForceDamageBase" Abstract="True">
-		<!--<workerClass>CombinationTraps.DamageWorker_ForceOutside</workerClass>-->
 	    <externalViolence>true</externalViolence>
 	    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+	    <harmsHealth>true</harmsHealth>
 	    <hasChanceToAdditionallyDamageInnerSolidParts>true</hasChanceToAdditionallyDamageInnerSolidParts>
 	</DamageDef>
 
@@ -14,7 +14,6 @@
 	    <additionalHediffs>
 	    	<li Class="DamageDefAdditionalHediff">
 	    		<hediff>ForceOutside</hediff>
-	    		<severityPerDamageDealt>0.1</severityPerDamageDealt>
 	    	</li>
 	    </additionalHediffs>
 	    <impactSoundType>Blunt</impactSoundType>
@@ -28,7 +27,6 @@
 	    <additionalHediffs>
 	    	<li Class="DamageDefAdditionalHediff">
 	    		<hediff>ForceOutside</hediff>
-	    		<severityPerDamageDealt>0.1</severityPerDamageDealt>
 	    	</li>
 	    </additionalHediffs>
 	    <impactSoundType>Blunt</impactSoundType>

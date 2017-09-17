@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef Name="BuildingCombinationTrapBase" ParentName="BuildingBase" Abstract="True">
+	<ThingDef Name="BuildingWallTrapBase" ParentName="BuildingBase" Abstract="True">
 		<altitudeLayer>Building</altitudeLayer>
     	<drawerType>RealtimeOnly</drawerType>
     	<rotatable>true</rotatable>
     	<tickerType>Normal</tickerType>
     	<stealable>false</stealable>
+    	<placeWorkers>
+			<li>CombinationTraps.PlaceWorker_WallTrap</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 	</ThingDef>
 
-	<ThingDef ParentName="BuildingCombinationTrapBase">
+	<ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPusher</defName>
     <label>push trap</label>
     <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
@@ -25,7 +29,10 @@
       <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>1</TrapMeleeDamage>
-      <TrapSpringChance>0.8</TrapSpringChance>
+      <TrapSpringChance>0.9</TrapSpringChance>
+      <ImpactForce>10</ImpactForce>
+      <Momentum>1</Momentum>
+      <TrapRange>1</TrapRange>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>
@@ -46,7 +53,7 @@
   </ThingDef>
   
   
-  <ThingDef ParentName="BuildingCombinationTrapBase">
+  <ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPuller</defName>
     <label>pull trap</label>
     <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
@@ -63,7 +70,10 @@
       <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>1</TrapMeleeDamage>
-      <TrapSpringChance>0.8</TrapSpringChance>
+      <TrapSpringChance>0.9</TrapSpringChance>
+      <ImpactForce>5</ImpactForce>
+      <Momentum>0.2</Momentum>
+      <TrapRange>4</TrapRange>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>

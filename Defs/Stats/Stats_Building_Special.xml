@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<StatDef>
+	    <defName>TrapRange</defName>
+	    <label>trap range</label>
+	    <description>.</description>
+	    <category>Building</category>
+	    <defaultBaseValue>1</defaultBaseValue>
+	    <minValue>1</minValue>
+	    <maxValue>10</maxValue>
+	    <toStringStyle>Integer</toStringStyle>
+	    <showIfUndefined>false</showIfUndefined>
+  	</StatDef>
+  	
+  	<StatDef>
+	    <defName>Momentum</defName>
+	    <label>momentum</label>
+	    <description>.</description>
+	    <category>Building</category>
+	    <defaultBaseValue>1</defaultBaseValue>
+	    <minValue>0.1</minValue>
+	    <maxValue>1</maxValue>
+	    <toStringStyle>PercentZero</toStringStyle>
+	    <showIfUndefined>false</showIfUndefined>
+  	</StatDef>
+
+	<StatDef>
+	    <defName>ImpactForce</defName>
+	    <label>impact force</label>
+	    <description>.</description>
+	    <category>Building</category>
+	    <defaultBaseValue>1</defaultBaseValue>
+	    <minValue>1</minValue>
+	    <maxValue>10</maxValue>
+	    <toStringStyle>Integer</toStringStyle>
+	    <showIfUndefined>false</showIfUndefined>
+  	</StatDef>
+</Defs>
