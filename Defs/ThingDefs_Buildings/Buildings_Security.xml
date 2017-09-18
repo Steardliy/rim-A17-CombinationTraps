@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef Name="BuildingWallTrapBase" ParentName="BuildingBase" Abstract="True">
+<!-- Base /////////////////////////////////////////////////// -->
+	<ThingDef Name="BuildingCombinationTrapBase" ParentName="BuildingBase" Abstract="True">
 		<altitudeLayer>Building</altitudeLayer>
     	<drawerType>RealtimeOnly</drawerType>
     	<rotatable>true</rotatable>
     	<tickerType>Normal</tickerType>
     	<stealable>false</stealable>
+    	<designationCategory>Security</designationCategory>
+	</ThingDef>
+	
+<!-- Wall traps //////////////////////////////////////////// -->
+	<ThingDef Name="BuildingWallTrapBase" ParentName="BuildingCombinationTrapBase" Abstract="True">
     	<placeWorkers>
 			<li>CombinationTraps.PlaceWorker_WallTrap</li>
 		</placeWorkers>
@@ -19,7 +25,7 @@
     <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/PusherArmed</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <graphicClass>Graphic_Multi</graphicClass>
       <damageData>
         <rect>(0,0,1,0.15)</rect>
       </damageData>
@@ -30,8 +36,8 @@
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>1</TrapMeleeDamage>
       <TrapSpringChance>0.9</TrapSpringChance>
-      <ImpactForce>10</ImpactForce>
-      <Momentum>1</Momentum>
+      <ImpactForce>15</ImpactForce>
+      <Momentum>0.25</Momentum>
       <TrapRange>1</TrapRange>
     </statBases>
     <stuffCategories>
@@ -40,18 +46,16 @@
       <li>Stony</li>
     </stuffCategories>
     <costStuffCount>70</costStuffCount>
-    <designationCategory>Security</designationCategory>
     <building>
       <isTrap>true</isTrap>
       <trapDamageCategory>Blunt</trapDamageCategory>
       <trapUnarmedGraphicData>
         <texPath>Things/Building/Security/PusherUnarmed</texPath>
-        <graphicClass>Graphic_Single</graphicClass>
+        <graphicClass>Graphic_Multi</graphicClass>
         <shaderType>Cutout</shaderType>
       </trapUnarmedGraphicData>
     </building>
   </ThingDef>
-  
   
   <ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPuller</defName>
@@ -60,7 +64,7 @@
     <thingClass>CombinationTraps.Building_TrapPuller</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/PullerArmed</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <graphicClass>Graphic_Multi</graphicClass>
       <damageData>
         <rect>(0,0,1,0.15)</rect>
       </damageData>
@@ -72,7 +76,7 @@
       <TrapMeleeDamage>1</TrapMeleeDamage>
       <TrapSpringChance>0.9</TrapSpringChance>
       <ImpactForce>5</ImpactForce>
-      <Momentum>0.2</Momentum>
+      <Momentum>0.1</Momentum>
       <TrapRange>4</TrapRange>
     </statBases>
     <stuffCategories>
@@ -81,15 +85,47 @@
       <li>Stony</li>
     </stuffCategories>
     <costStuffCount>70</costStuffCount>
-    <designationCategory>Security</designationCategory>
     <building>
       <isTrap>true</isTrap>
       <trapDamageCategory>Blunt</trapDamageCategory>
       <trapUnarmedGraphicData>
         <texPath>Things/Building/Security/PullerUnarmed</texPath>
-        <graphicClass>Graphic_Single</graphicClass>
+        <graphicClass>Graphic_Multi</graphicClass>
         <shaderType>Cutout</shaderType>
       </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+
+
+<!-- Misc //////////////////////////////////////////// -->
+  <ThingDef ParentName="BuildingCombinationTrapBase">
+    <defName>TrapArrowPanel</defName>
+    <label>arrow panel trap</label>
+    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <thingClass>CombinationTraps.Building_TrapArrowPanel</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/ArrowPanel</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Beauty>-4</Beauty>
+      <TrapMeleeDamage>0</TrapMeleeDamage>
+      <TrapSpringChance>0.9</TrapSpringChance>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDamageCategory>Blunt</trapDamageCategory>
     </building>
   </ThingDef>
 

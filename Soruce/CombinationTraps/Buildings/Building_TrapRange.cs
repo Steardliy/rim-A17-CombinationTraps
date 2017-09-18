@@ -20,11 +20,6 @@ namespace CombinationTraps
             this.inspectRange = Mathf.RoundToInt(this.GetStatValue(CT_StatDefOf.TrapRange));
         }
 
-        public override void Draw()
-        {
-            base.Draw();
-        }
-
         public override void Tick()
         {
             base.Tick();
@@ -78,6 +73,7 @@ namespace CombinationTraps
             float angle = this.ActAngle();
             DamageInfo dinfo = new DamageInfo(this.dDef, num, angle, this, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetBodyRegion(height, BodyPartDepth.Outside);
+
             p.TakeDamage(dinfo);
         }
         protected virtual float ActAngle()

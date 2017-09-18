@@ -7,7 +7,7 @@
 	    <category>Building</category>
 	    <defaultBaseValue>1</defaultBaseValue>
 	    <minValue>1</minValue>
-	    <maxValue>10</maxValue>
+	    <maxValue>15</maxValue>
 	    <toStringStyle>Integer</toStringStyle>
 	    <showIfUndefined>false</showIfUndefined>
   	</StatDef>
@@ -31,7 +31,7 @@
 	    <category>Building</category>
 	    <defaultBaseValue>1</defaultBaseValue>
 	    <minValue>1</minValue>
-	    <maxValue>10</maxValue>
+	    <maxValue>20</maxValue>
 	    <toStringStyle>Integer</toStringStyle>
 	    <showIfUndefined>false</showIfUndefined>
   	</StatDef>

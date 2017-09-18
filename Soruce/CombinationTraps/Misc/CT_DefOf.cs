@@ -21,4 +21,10 @@ namespace CombinationTraps
         public static StatDef Momentum;
         public static StatDef TrapRange;
     }
+
+    [DefOf]
+    public static class CT_HediffDefOf
+    {
+        public static HediffDef ForceOutside;
+    }
 }

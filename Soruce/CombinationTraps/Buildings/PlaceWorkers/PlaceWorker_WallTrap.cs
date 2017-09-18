@@ -14,7 +14,7 @@ namespace CombinationTraps
         {
             int range = Mathf.RoundToInt(def.GetStatValueAbstract(CT_StatDefOf.TrapRange));
             List<IntVec3> drawCells = new List<IntVec3>();
-            for (int i = 0; i < range; i++)
+            for (int i = 1; i < range; i++)
             {
                 drawCells.Add(center + rot.FacingCell * i);
             }

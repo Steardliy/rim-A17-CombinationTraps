@@ -11,13 +11,14 @@ namespace CombinationTraps
 {
     class Hediff_ForceOutside : HediffWithComps
     {
-        protected Vector3 origin;
-        protected Vector3 direction;
+        public Vector3 Origin { get; private set; }
+        public IntVec3 Direction { get; set; }
         private int tickInterval;
 
         public override bool TryMergeWith(Hediff other)
         {
             base.TryMergeWith(other);
+            base.Severity = 0;
             return false;
         }
 
@@ -41,11 +42,19 @@ namespace CombinationTraps
                 angle = 0;
             }
 
-            this.origin = p.TrueCenter();
-            this.direction = this.Vector3Round(angle.ToQuat() * Vector3.forward);
+            this.Origin = p.TrueCenter();
+            this.Direction = angle.AsIntVec3();
 
             p.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
-            p.stances.SetStance(new Stance_Cooldown((int)base.Severity * this.tickInterval, p, null));
+
+            Stance_Busy stanceBusy = p.stances.curStance as Stance_Busy;
+            int num = Mathf.RoundToInt(base.Severity) * this.tickInterval;
+            if (stanceBusy == null || stanceBusy.ticksLeft < num)
+            {
+                Stance_Cooldown stanceCooldown = new Stance_Cooldown(num, p, null);
+                stanceCooldown.neverAimWeapon = true;
+                p.stances.SetStance(stanceCooldown);
+            }
         }
 
         public override void Tick()
@@ -53,24 +62,24 @@ namespace CombinationTraps
             base.Tick();
             if (this.IsBlockedByAny())
             {
-                this.Severity = 0;
+                base.Severity = 0;
                 return;
             }
-            if (this.Severity >= 0 && this.DoTick())
+            if (base.Severity >= 0 && this.DoTick())
             {
-                base.pawn.Position += this.direction.ToIntVec3();
-                base.pawn.pather.Notify_Teleported_Int();
-                if (base.pawn.jobs != null && base.pawn.jobs.curJob != null)
-                {
-                    base.pawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
-                }
-                this.Severity--;
+                Log.Message("preTweenedPos=" + base.pawn.Drawer.tweener.TweenedPos);
+                Vector3 v = base.pawn.Drawer.tweener.TweenedPos;
+                
+                Log.Message("postTweenedPos=" + base.pawn.Drawer.tweener.TweenedPos);
+                base.pawn.Position += this.Direction;
+                this.ResetPath();
+                base.Severity--;
             }
         }
 
         private bool IsBlockedByAny()
         {
-            IntVec3 vec = base.pawn.Position + this.direction.ToIntVec3();
+            IntVec3 vec = base.pawn.Position + this.Direction;
             Map map = base.pawn.Map;
             if (!vec.InBounds(map) || !vec.Walkable(map))
             {
@@ -78,13 +87,19 @@ namespace CombinationTraps
             }
             return false;
         }
-        private Vector3 Vector3Round(Vector3 v)
-        {
-            return new Vector3(Mathf.Round(v.x), Mathf.Round(v.y), Mathf.Round(v.z));
-        }
         private bool DoTick()
         {
             return Find.TickManager.TicksGame % this.tickInterval == 0;
+        }
+        private void ResetPath()
+        {
+            Pawn_PathFollower pf = base.pawn.pather;
+            if (pf.curPath != null)
+            {
+                pf.curPath.ReleaseToPool();
+            }
+            pf.curPath = null;
+            pf.ResetToCurrentPosition();
         }
     }
 }
