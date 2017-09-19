@@ -35,9 +35,88 @@
       <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>1</TrapMeleeDamage>
-      <TrapSpringChance>0.9</TrapSpringChance>
+      <TrapSpringChance>1</TrapSpringChance>
       <ImpactForce>15</ImpactForce>
-      <Momentum>0.25</Momentum>
+      <Momentum>1</Momentum>
+      <TrapRange>1</TrapRange>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/PusherUnarmed</texPath>
+        <graphicClass>Graphic_Multi</graphicClass>
+        <shaderType>Cutout</shaderType>
+      </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="BuildingWallTrapBase">
+    <defName>TrapPusherPP</defName>
+    <label>push trapPP</label>
+    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/PusherArmed</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Beauty>-4</Beauty>
+      <TrapMeleeDamage>1</TrapMeleeDamage>
+      <TrapSpringChance>1</TrapSpringChance>
+      <ImpactForce>10</ImpactForce>
+      <Momentum>0.5</Momentum>
+      <TrapRange>1</TrapRange>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/PusherUnarmed</texPath>
+        <graphicClass>Graphic_Multi</graphicClass>
+        <shaderType>Cutout</shaderType>
+      </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingWallTrapBase">
+    <defName>TrapPusherPPP</defName>
+    <label>push trapPPP</label>
+    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/PusherArmed</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Beauty>-4</Beauty>
+      <TrapMeleeDamage>1</TrapMeleeDamage>
+      <TrapSpringChance>1</TrapSpringChance>
+      <ImpactForce>5</ImpactForce>
+      <Momentum>0.1</Momentum>
       <TrapRange>1</TrapRange>
     </statBases>
     <stuffCategories>
@@ -74,10 +153,10 @@
       <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>1</TrapMeleeDamage>
-      <TrapSpringChance>0.9</TrapSpringChance>
+      <TrapSpringChance>1</TrapSpringChance>
       <ImpactForce>5</ImpactForce>
       <Momentum>0.1</Momentum>
-      <TrapRange>4</TrapRange>
+      <TrapRange>6</TrapRange>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>

@@ -25,17 +25,18 @@ namespace CombinationTraps
             base.Tick();
             if (this.Armed)
             {
-                FieldInfo touchInfo = typeof(Building_Trap).GetField("touchingPawns", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
-                List<Pawn> pList = (List<Pawn>)touchInfo.GetValue(this);
+                /*FieldInfo touchInfo = typeof(Building_Trap).GetField("touchingPawns", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
+                List<Pawn> pList = (List<Pawn>)touchInfo.GetValue(this);*/
 
                 for(int i = 1; i < this.inspectRange; i++)
                 {
                     IntVec3 pos = base.Position + base.Rotation.FacingCell * i;
-                    pList.AddRange(this.PawnsAt(pos));
+                    this.PawnsAt(pos);
+                    //pList.AddRange(this.PawnsAt(pos));
                 }
             }
         }
-        protected virtual void checkSpring(Pawn p)
+        protected void checkSpring(Pawn p)
         {
             if (Rand.Value < this.SpringChance(p))
             {
@@ -80,7 +81,7 @@ namespace CombinationTraps
         {
             return base.Rotation.AsAngle;
         }
-        private IEnumerable<Pawn> PawnsAt(IntVec3 pos)
+        private void PawnsAt(IntVec3 pos)
         {
             List<Thing> thingList = pos.GetThingList(base.Map);
             for (int i = 0; i < thingList.Count; i++)
@@ -89,7 +90,7 @@ namespace CombinationTraps
                 if (pawn != null)
                 {
                     this.checkSpring(pawn);
-                    yield return pawn;
+                   // yield return pawn;
                 }
             }
         }

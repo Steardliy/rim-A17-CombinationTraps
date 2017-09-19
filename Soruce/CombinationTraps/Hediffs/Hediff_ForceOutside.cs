@@ -6,6 +6,7 @@ using Verse;
 using RimWorld;
 using UnityEngine;
 using Verse.AI;
+using System.Reflection;
 
 namespace CombinationTraps
 {
@@ -28,20 +29,24 @@ namespace CombinationTraps
             Pawn p = base.pawn;
 
             float angle;
+            float momentum;
             if (dinfo.HasValue)
             {
                 DamageInfo info = dinfo.Value;
-                this.tickInterval = Mathf.RoundToInt(1f / (info.Instigator.GetStatValue(CT_StatDefOf.Momentum)));
+                momentum = info.Instigator.GetStatValue(CT_StatDefOf.Momentum);
+                this.tickInterval = Mathf.RoundToInt(1f / momentum);
                 base.Severity = info.Instigator.GetStatValue(CT_StatDefOf.ImpactForce);
                 angle = info.Angle;
             }
             else
             {
+                momentum = Override_PreDrawPosCalculation.default_SpringTightness / Override_PreDrawPosCalculation.springTightnessCoefficient;
                 this.tickInterval = 1;
                 base.Severity = base.def.initialSeverity;
                 angle = 0;
             }
 
+            this.CorrectDrawPos(momentum);
             this.Origin = p.TrueCenter();
             this.Direction = angle.AsIntVec3();
 
@@ -65,15 +70,20 @@ namespace CombinationTraps
                 base.Severity = 0;
                 return;
             }
-            if (base.Severity >= 0 && this.DoTick())
+            if (this.DoTick())
             {
-                Log.Message("preTweenedPos=" + base.pawn.Drawer.tweener.TweenedPos);
-                Vector3 v = base.pawn.Drawer.tweener.TweenedPos;
-                
-                Log.Message("postTweenedPos=" + base.pawn.Drawer.tweener.TweenedPos);
                 base.pawn.Position += this.Direction;
                 this.ResetPath();
                 base.Severity--;
+            }
+        }
+
+        public override void PostRemoved()
+        {
+            base.PostRemoved();
+            if (!base.pawn.health.hediffSet.HasHediff(CT_HediffDefOf.ForceOutside))
+            {
+                Override_PreDrawPosCalculation.Default();
             }
         }
 
@@ -100,6 +110,11 @@ namespace CombinationTraps
             }
             pf.curPath = null;
             pf.ResetToCurrentPosition();
+        }
+        private void CorrectDrawPos(float momentum)
+        {
+            float newTightness = momentum * Override_PreDrawPosCalculation.springTightnessCoefficient;
+            Override_PreDrawPosCalculation.SpringTightness = Mathf.Max(Override_PreDrawPosCalculation.SpringTightness, newTightness);
         }
     }
 }
