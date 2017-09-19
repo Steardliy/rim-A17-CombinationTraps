@@ -21,7 +21,7 @@
 	<ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPusher</defName>
     <label>push trap</label>
-    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <description>超ぶっとぶ.</description>
     <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/PusherArmed</texPath>
@@ -61,7 +61,7 @@
   <ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPusherPP</defName>
     <label>push trapPP</label>
-    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <description>適度にぶっとぶ.</description>
     <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/PusherArmed</texPath>
@@ -100,7 +100,7 @@
   <ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPusherPPP</defName>
     <label>push trapPPP</label>
-    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <description>ちょっとぶっとぶ.</description>
     <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/PusherArmed</texPath>
@@ -139,7 +139,7 @@
   <ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPuller</defName>
     <label>pull trap</label>
-    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <description>ひっぱる.</description>
     <thingClass>CombinationTraps.Building_TrapPuller</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/PullerArmed</texPath>
@@ -180,7 +180,7 @@
   <ThingDef ParentName="BuildingCombinationTrapBase">
     <defName>TrapArrowPanel</defName>
     <label>arrow panel trap</label>
-    <description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+    <description>ぶっとぶ方向が変わる.</description>
     <thingClass>CombinationTraps.Building_TrapArrowPanel</thingClass>
     <graphicData>
       <texPath>Things/Building/Security/ArrowPanel</texPath>
@@ -194,7 +194,7 @@
       <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>0</TrapMeleeDamage>
-      <TrapSpringChance>0.9</TrapSpringChance>
+      <TrapSpringChance>1</TrapSpringChance>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>
