@@ -116,7 +116,7 @@
       <TrapMeleeDamage>1</TrapMeleeDamage>
       <TrapSpringChance>1</TrapSpringChance>
       <ImpactForce>5</ImpactForce>
-      <Momentum>0.1</Momentum>
+      <Momentum>0.3</Momentum>
       <TrapRange>1</TrapRange>
     </statBases>
     <stuffCategories>

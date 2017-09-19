@@ -5,9 +5,9 @@ namespace CombinationTraps
     public static class Override_PreDrawPosCalculation
     {
         public const float default_SpringTightness = 0.09f;
-        public const float springTightnessCoefficient = 0.4f;
+        public const float springTightnessCoefficient = 0.35f;
 
-        private const float springTightnessRangeMin = 0.05f;
+        private const float springTightnessRangeMin = 0.035f;
         private const float springTightnessRangeMax = 0.3f;
 
         private static float springTightnessInt = default_SpringTightness;

@@ -34,6 +34,10 @@ namespace CombinationTraps
                 }
             }
         }
+        protected override float SpringChance(Pawn p)
+        {
+            return Mathf.Clamp01(this.GetStatValue(StatDefOf.TrapSpringChance, true));
+        }
         protected override void SpringSub(Pawn p)
         {
             FieldInfo armedInfo = typeof(Building_TrapRearmable).GetField("armedInt", BindingFlags.SetField | BindingFlags.Instance | BindingFlags.NonPublic);
@@ -58,6 +62,23 @@ namespace CombinationTraps
 
             p.TakeDamage(dinfo);
         }
+        protected void CheckSpring(Pawn p)
+        {
+            if (Rand.Value < this.SpringChance(p))
+            {
+                this.Spring(p);
+                if (p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer)
+                {
+                    Find.LetterStack.ReceiveLetter("LetterFriendlyTrapSprungLabel".Translate(new object[]
+                    {
+                        p.NameStringShort
+                    }), "LetterFriendlyTrapSprung".Translate(new object[]
+                    {
+                        p.NameStringShort
+                    }), LetterDefOf.BadNonUrgent, new TargetInfo(base.Position, base.Map, false), null);
+                }
+            }
+        }
         protected virtual float ActAngle()
         {
             return base.Rotation.AsAngle;
@@ -70,8 +91,7 @@ namespace CombinationTraps
                 Pawn pawn = thingList[i] as Pawn;
                 if (pawn != null)
                 {
-                    MethodInfo info = typeof(Building_Trap).GetMethod("CheckSpring", new Type[] { typeof(Pawn) });
-                    info.Invoke(this, new System.Object[] { pawn });
+                    this.CheckSpring(pawn);
                    // yield return pawn;
                 }
             }
