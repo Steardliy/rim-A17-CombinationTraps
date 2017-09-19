@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Harmony;
 using System.Collections.Generic;
-using System.Linq;
-using RimWorld;
-using Harmony;
-using Verse;
-using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
-using UnityEngine;
+using Verse;
 
 namespace CombinationTraps
 {
