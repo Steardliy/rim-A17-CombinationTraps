@@ -65,7 +65,7 @@ namespace CombinationTraps
                 base.Severity = 0;
                 return;
             }
-            if (this.DoTick())
+            if (this.ShouldTick())
             {
                 base.pawn.Position += this.Direction;
                 this.ResetPath();
@@ -92,7 +92,7 @@ namespace CombinationTraps
             }
             return false;
         }
-        private bool DoTick()
+        private bool ShouldTick()
         {
             return Find.TickManager.TicksGame % this.tickInterval == 0;
         }
