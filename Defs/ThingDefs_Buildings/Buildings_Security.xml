@@ -1,83 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<!-- Base /////////////////////////////////////////////////// -->
+<!-- Base //////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<ThingDef Name="BuildingCombinationTrapBase" ParentName="BuildingBase" Abstract="True">
 		<altitudeLayer>Building</altitudeLayer>
     	<drawerType>RealtimeOnly</drawerType>
-    	<rotatable>true</rotatable>
     	<tickerType>Normal</tickerType>
     	<stealable>false</stealable>
-    	<designationCategory>Security</designationCategory>
+    	<designationCategory>CombinationTraps</designationCategory>
+    	<building>
+	      <isTrap>true</isTrap>
+	    </building>
 	</ThingDef>
 	
-<!-- Wall traps //////////////////////////////////////////// -->
+<!-- Wall traps Base////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<ThingDef Name="BuildingWallTrapBase" ParentName="BuildingCombinationTrapBase" Abstract="True">
+    	<rotatable>true</rotatable>
     	<placeWorkers>
 			<li>CombinationTraps.PlaceWorker_WallTrap</li>
 		</placeWorkers>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+	      	<damageData>
+	        	<rect>(0,0,1,0.15)</rect>
+	      	</damageData>
+	    </graphicData>
+		<building>
+			<trapUnarmedGraphicData>
+				<graphicClass>Graphic_Multi</graphicClass>
+	        	<shaderType>Cutout</shaderType>
+      		</trapUnarmedGraphicData>
+    	</building>
 	</ThingDef>
+	
+	<ThingDef Name="BuildingElectricWallTrapBase" ParentName="BuildingWallTrapBase" Abstract="True">
+		<comps>
+		    <li Class="CompProperties_Flickable" />
+     		<li Class="CompProperties_Breakdownable"/>
+		</comps>
+	</ThingDef>
+	
 
+<!-- Wall traps Pusher////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPusher</defName>
     <label>push trap</label>
-    <description>超ぶっとぶ.</description>
+    <description>.</description>
     <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
     <graphicData>
-      <texPath>Things/Building/Security/PusherArmed</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <damageData>
-        <rect>(0,0,1,0.15)</rect>
-      </damageData>
+      <texPath>Things/Building/Security/WallTraps/PusherArmed</texPath>
     </graphicData>
+    <soundDrop>InteractRifle</soundDrop>
+    <soundPickup>InteractRifle</soundPickup>
     <statBases>
-      <MaxHitPoints>40</MaxHitPoints>
-      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
       <Beauty>-4</Beauty>
-      <TrapMeleeDamage>1</TrapMeleeDamage>
-      <TrapSpringChance>1</TrapSpringChance>
-      <ImpactForce>15</ImpactForce>
-      <Momentum>1</Momentum>
-      <TrapRange>1</TrapRange>
-    </statBases>
-    <stuffCategories>
-      <li>Metallic</li>
-      <li>Woody</li>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>70</costStuffCount>
-    <building>
-      <isTrap>true</isTrap>
-      <trapDamageCategory>Blunt</trapDamageCategory>
-      <trapUnarmedGraphicData>
-        <texPath>Things/Building/Security/PusherUnarmed</texPath>
-        <graphicClass>Graphic_Multi</graphicClass>
-        <shaderType>Cutout</shaderType>
-      </trapUnarmedGraphicData>
-    </building>
-  </ThingDef>
-  
-  
-  <ThingDef ParentName="BuildingWallTrapBase">
-    <defName>TrapPusherPP</defName>
-    <label>push trapPP</label>
-    <description>適度にぶっとぶ.</description>
-    <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
-    <graphicData>
-      <texPath>Things/Building/Security/PusherArmed</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <damageData>
-        <rect>(0,0,1,0.15)</rect>
-      </damageData>
-    </graphicData>
-    <statBases>
-      <MaxHitPoints>40</MaxHitPoints>
-      <WorkToBuild>2000</WorkToBuild>
-      <Beauty>-4</Beauty>
-      <TrapMeleeDamage>1</TrapMeleeDamage>
       <TrapSpringChance>1</TrapSpringChance>
       <ImpactForce>10</ImpactForce>
-      <Momentum>0.5</Momentum>
+      <Momentum>0.8</Momentum>
       <TrapRange>1</TrapRange>
     </statBases>
     <stuffCategories>
@@ -87,76 +68,81 @@
     </stuffCategories>
     <costStuffCount>70</costStuffCount>
     <building>
-      <isTrap>true</isTrap>
-      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapDamageCategory>Sharp</trapDamageCategory>
       <trapUnarmedGraphicData>
-        <texPath>Things/Building/Security/PusherUnarmed</texPath>
-        <graphicClass>Graphic_Multi</graphicClass>
-        <shaderType>Cutout</shaderType>
+        <texPath>Things/Building/Security/WallTraps/PusherUnarmed</texPath>
       </trapUnarmedGraphicData>
     </building>
   </ThingDef>
   
-  <ThingDef ParentName="BuildingWallTrapBase">
-    <defName>TrapPusherPPP</defName>
-    <label>push trapPPP</label>
-    <description>ちょっとぶっとぶ.</description>
+	<ThingDef ParentName="BuildingElectricWallTrapBase">
+    <defName>TrapElectricPusher</defName>
+    <label>electric push trap</label>
+    <description>.</description>
     <thingClass>CombinationTraps.Building_TrapPusher</thingClass>
     <graphicData>
-      <texPath>Things/Building/Security/PusherArmed</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <damageData>
-        <rect>(0,0,1,0.15)</rect>
-      </damageData>
+      <texPath>Things/Building/Security/WallTraps/ElectricPusherArmed</texPath>
     </graphicData>
+    <soundDrop>InteractRifle</soundDrop>
+    <soundPickup>InteractRifle</soundPickup>
     <statBases>
-      <MaxHitPoints>40</MaxHitPoints>
+      <MaxHitPoints>80</MaxHitPoints>
       <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
-      <TrapMeleeDamage>1</TrapMeleeDamage>
       <TrapSpringChance>1</TrapSpringChance>
-      <ImpactForce>5</ImpactForce>
-      <Momentum>0.2</Momentum>
+      <ImpactForce>14</ImpactForce>
+      <Momentum>0.91</Momentum>
       <TrapRange>1</TrapRange>
+      <RearmInterval>5</RearmInterval>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>
-      <li>Woody</li>
       <li>Stony</li>
     </stuffCategories>
-    <costStuffCount>70</costStuffCount>
+    <costStuffCount>100</costStuffCount>
     <building>
-      <isTrap>true</isTrap>
-      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapDamageCategory>Sharp</trapDamageCategory>
       <trapUnarmedGraphicData>
-        <texPath>Things/Building/Security/PusherUnarmed</texPath>
-        <graphicClass>Graphic_Multi</graphicClass>
-        <shaderType>Cutout</shaderType>
+        <texPath>Things/Building/Security/WallTraps/ElectricPusherUnarmed</texPath>
       </trapUnarmedGraphicData>
     </building>
+    <comps>
+		<li Class="CompProperties_Power">
+	        <compClass>CompPowerTrader</compClass>
+        	<basePowerConsumption>50</basePowerConsumption>
+			<shortCircuitInRain>false</shortCircuitInRain>
+	    </li>
+	    <li Class="CombinationTraps.CompProperties_Signal">
+	    	<compClass>CombinationTraps.CompSignalTrap</compClass>
+	    	<defaultTransmissionStance>ShutDown</defaultTransmissionStance>
+	    	<transmissionStanceFilter>
+	    		<li>OnlyReceive</li>
+	    		<li>Any</li>
+	    	</transmissionStanceFilter>
+	    </li>
+	</comps>
   </ThingDef>
   
+  
+<!-- Wall traps Puller////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <ThingDef ParentName="BuildingWallTrapBase">
     <defName>TrapPuller</defName>
     <label>pull trap</label>
-    <description>ひっぱる.</description>
+    <description>.</description>
     <thingClass>CombinationTraps.Building_TrapPuller</thingClass>
     <graphicData>
-      <texPath>Things/Building/Security/PullerArmed</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <damageData>
-        <rect>(0,0,1,0.15)</rect>
-      </damageData>
+      <texPath>Things/Building/Security/WallTraps/PullerArmed</texPath>
     </graphicData>
+    <soundDrop>InteractRifle</soundDrop>
+    <soundPickup>InteractRifle</soundPickup>
     <statBases>
-      <MaxHitPoints>40</MaxHitPoints>
-      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
       <Beauty>-4</Beauty>
-      <TrapMeleeDamage>1</TrapMeleeDamage>
       <TrapSpringChance>1</TrapSpringChance>
-      <ImpactForce>5</ImpactForce>
-      <Momentum>0.2</Momentum>
-      <TrapRange>6</TrapRange>
+      <ImpactForce>8</ImpactForce>
+      <Momentum>0.3</Momentum>
+      <TrapRange>8</TrapRange>
     </statBases>
     <stuffCategories>
       <li>Metallic</li>
@@ -165,47 +151,352 @@
     </stuffCategories>
     <costStuffCount>70</costStuffCount>
     <building>
-      <isTrap>true</isTrap>
       <trapDamageCategory>Blunt</trapDamageCategory>
       <trapUnarmedGraphicData>
-        <texPath>Things/Building/Security/PullerUnarmed</texPath>
-        <graphicClass>Graphic_Multi</graphicClass>
-        <shaderType>Cutout</shaderType>
+        <texPath>Things/Building/Security/WallTraps/PullerUnarmed</texPath>
+      </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingElectricWallTrapBase">
+    <defName>TrapElectricPuller</defName>
+    <label>electric pull trap</label>
+    <description>.</description>
+    <thingClass>CombinationTraps.Building_TrapPuller</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/WallTraps/ElectricPullerArmed</texPath>
+    </graphicData>
+    <soundDrop>InteractRifle</soundDrop>
+    <soundPickup>InteractRifle</soundPickup>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Beauty>-4</Beauty>
+      <TrapSpringChance>1</TrapSpringChance>
+      <ImpactForce>8</ImpactForce>
+      <Momentum>0.5</Momentum>
+      <TrapRange>10</TrapRange>
+      <RearmInterval>8</RearmInterval>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <building>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/WallTraps/ElectricPullerUnarmed</texPath>
+      </trapUnarmedGraphicData>
+    </building>
+    <comps>
+		<li Class="CompProperties_Power">
+	        <compClass>CompPowerTrader</compClass>
+        	<basePowerConsumption>50</basePowerConsumption>
+			<shortCircuitInRain>false</shortCircuitInRain>
+	    </li>
+	    <li Class="CombinationTraps.CompProperties_Signal">
+	    	<compClass>CombinationTraps.CompSignalTrap</compClass>
+	    	<defaultTransmissionStance>ShutDown</defaultTransmissionStance>
+	    	<transmissionStanceFilter>
+	    		<li>OnlyReceive</li>
+	    		<li>Any</li>
+	    	</transmissionStanceFilter>
+	    </li>
+	</comps>
+  </ThingDef>
+
+
+
+<!-- Extensive range traps Base////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<ThingDef Name="BuildingTrapExtensiveRangeBase" ParentName="BuildingCombinationTrapBase" Abstract="True">
+    	<rotatable>false</rotatable>
+	    <thingClass>CombinationTraps.Building_TrapExtensiveRange</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+      		<damageData>
+        		<rect>(0.1,0,0.8,0.3)</rect>
+      		</damageData>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef Name="BuildingElectricTrapExtensiveRangeBase" ParentName="BuildingTrapExtensiveRangeBase" Abstract="True">
+		<comps>
+			<li Class="CompProperties_Power">
+		        <compClass>CompPowerTrader</compClass>
+	        	<basePowerConsumption>0</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+		    </li>
+		    <li Class="CombinationTraps.CompProperties_Signal">
+		    	<compClass>CombinationTraps.CompSignalTrap</compClass>
+		    	<defaultTransmissionStance>Any</defaultTransmissionStance>
+		    </li>
+		</comps>
+	</ThingDef>
+	
+	
+<!-- Extensive range traps IED////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<ThingDef ParentName="BuildingElectricTrapExtensiveRangeBase">
+	    <defName>TrapCTIEDBomb</defName>
+	    <label>CT IED trap</label>
+	    <graphicData>
+	      <texPath>Things/Building/Security/ExtensiveRangeTraps/CTIEDBomb</texPath>
+	    </graphicData>
+	    <statBases>
+	      <MaxHitPoints>40</MaxHitPoints>
+	      <WorkToBuild>2100</WorkToBuild>
+	      <Beauty>-4</Beauty>
+	      <TrapSpringChance>0.8</TrapSpringChance>
+	    </statBases>
+	    <description>.</description>
+	    <costList>
+			<MortarShell>1</MortarShell>
+	      	<Component>1</Component>
+	    </costList>
+	    <comps>
+		    <li Class="CompProperties_Explosive">
+		        <explosiveRadius>2.9</explosiveRadius>
+		        <explosiveDamageType>Bomb</explosiveDamageType>
+		        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+		        <wickTicks>
+		          <min>10</min>
+		          <max>15</max>
+		        </wickTicks>
+		    </li>
+	    </comps>
+	    <researchPrerequisites><li>IEDBomb</li></researchPrerequisites>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingElectricTrapExtensiveRangeBase">
+	    <defName>TrapCTIEDIncendiary</defName>
+	    <label>CT IED incendiary trap</label>
+	    <graphicData>
+	      <texPath>Things/Building/Security/ExtensiveRangeTraps/CTIEDIncendiary</texPath>
+	    </graphicData>
+	    <statBases>
+	      <MaxHitPoints>40</MaxHitPoints>
+	      <WorkToBuild>2100</WorkToBuild>
+	      <Beauty>-4</Beauty>
+	      <TrapSpringChance>0.8</TrapSpringChance>
+	    </statBases>
+	    <description>.</description>
+	    <costList>
+	      <Chemfuel>25</Chemfuel>
+	      <Component>1</Component>
+	    </costList>
+	    <comps>
+		    <li Class="CompProperties_Explosive">
+		      	<explosiveRadius>2.9</explosiveRadius>
+		      	<explosiveDamageType>Flame</explosiveDamageType>
+		        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+		        <wickTicks>
+		          	<min>10</min>
+		          	<max>15</max>
+		      	</wickTicks>
+		    </li>
+	    </comps>
+	    <researchPrerequisites><li>IEDIncendiary</li></researchPrerequisites>
+	</ThingDef>
+  
+  	<ThingDef ParentName="BuildingElectricTrapExtensiveRangeBase">
+  		<defName>TrapCTIEDSmoke</defName>
+	    <label>CT IED smoke trap</label>
+	    <graphicData>
+	      <texPath>Things/Building/Security/ExtensiveRangeTraps/CTIEDSmoke</texPath>
+	    </graphicData>
+	    <statBases>
+	      <MaxHitPoints>40</MaxHitPoints>
+	      <WorkToBuild>2000</WorkToBuild>
+	      <Beauty>-4</Beauty>
+	      <TrapSpringChance>0.8</TrapSpringChance>
+	    </statBases>
+	    <description>.</description>
+	    <costList>
+	      <Chemfuel>20</Chemfuel>
+	      <Component>1</Component>
+	    </costList>
+	    <comps>
+		    <li Class="CompProperties_Explosive">
+		      	<explosiveRadius>2.9</explosiveRadius>
+		      	<explosiveDamageType>Smoke</explosiveDamageType>
+		        <postExplosionSpawnThingDef>Gas_Smoke</postExplosionSpawnThingDef>
+		        <postExplosionSpawnChance>1</postExplosionSpawnChance>
+		        <postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+		        <chanceNeverExplodeFromDamage>true</chanceNeverExplodeFromDamage>
+		        <wickTicks>
+		          	<min>10</min>
+		          	<max>15</max>
+		      	</wickTicks>
+		    </li>
+	    </comps>
+	    <researchPrerequisites><li>IEDIncendiary</li></researchPrerequisites>
+  	</ThingDef>
+  	
+  	<ThingDef ParentName="BuildingElectricTrapExtensiveRangeBase">
+  		<defName>TrapCTIEDAnesthetic</defName>
+	    <label>CT IED Anesthetic trap</label>
+	    <graphicData>
+	      <texPath>Things/Building/Security/ExtensiveRangeTraps/CTIEDAnesthetic</texPath>
+	    </graphicData>
+	    <statBases>
+	      <MaxHitPoints>40</MaxHitPoints>
+	      <WorkToBuild>2100</WorkToBuild>
+	      <Beauty>-4</Beauty>
+	      <TrapSpringChance>0.8</TrapSpringChance>
+	    </statBases>
+	    <description>.</description>
+	    <costList>
+	      <Medicine>5</Medicine>
+	      <Component>1</Component>
+	    </costList>
+	    <comps>
+		    <li Class="CompProperties_Explosive">
+		      	<explosiveRadius>2.9</explosiveRadius>
+		      	<explosiveDamageType>Anesthetic</explosiveDamageType>
+		        <chanceNeverExplodeFromDamage>true</chanceNeverExplodeFromDamage>
+		        <wickTicks>
+		          	<min>10</min>
+		          	<max>15</max>
+		      	</wickTicks>
+		    </li>
+	    </comps>
+	    <researchPrerequisites><li>IEDIncendiary</li></researchPrerequisites>
+  	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingElectricTrapExtensiveRangeBase">
+  		<defName>TrapCTIEDEMP</defName>
+	    <label>CT IED EMP trap</label>
+	    <graphicData>
+	      <texPath>Things/Building/Security/ExtensiveRangeTraps/CTIEDEMP</texPath>
+	    </graphicData>
+	    <statBases>
+	      <MaxHitPoints>40</MaxHitPoints>
+	      <WorkToBuild>2100</WorkToBuild>
+	      <Beauty>-4</Beauty>
+	      <TrapSpringChance>0.8</TrapSpringChance>
+	    </statBases>
+	    <description>.</description>
+	    <costList>
+	      <Steel>25</Steel>
+	      <Component>1</Component>
+	    </costList>
+	    <comps>
+		    <li Class="CompProperties_Explosive">
+		      	<explosiveRadius>2.9</explosiveRadius>
+		      	<explosiveDamageType>EMP</explosiveDamageType>
+		        <chanceNeverExplodeFromDamage>true</chanceNeverExplodeFromDamage>
+		        <wickTicks>
+		          	<min>10</min>
+		          	<max>15</max>
+		      	</wickTicks>
+		    </li>
+	    </comps>
+	    <researchPrerequisites><li>IEDIncendiary</li></researchPrerequisites>
+  	</ThingDef>
+
+<!-- Panel traps Base////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<ThingDef Name="BuildingPanelTrapBase" ParentName="BuildingCombinationTrapBase" Abstract="True">
+    	<rotatable>true</rotatable>
+		<statBases>
+			<TrapSpringChance>1</TrapSpringChance>
+      		<Beauty>-4</Beauty>
+		</statBases>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+	      	<damageData>
+	        	<rect>(0,0,1,0.15)</rect>
+	      	</damageData>
+    	</graphicData>
+    	<building>
+    		<trapUnarmedGraphicData>
+    			<graphicClass>Graphic_Single</graphicClass>
+        		<shaderType>Cutout</shaderType>
+      		</trapUnarmedGraphicData>
+    	</building>
+	</ThingDef>
+	
+	<ThingDef Name="BuildingElectricPanelTrapBase" ParentName="BuildingPanelTrapBase" Abstract="True">
+		<comps>
+	    	<li Class="CombinationTraps.CompProperties_Signal">
+		    	<compClass>CombinationTraps.CompSignalTrap</compClass>
+		    	<defaultTransmissionStance>ShutDown</defaultTransmissionStance>
+		    	<transmissionStanceFilter>
+		    		<li>OnlyTransmit</li>
+		    		<li>Any</li>
+		    	</transmissionStanceFilter>
+		    </li>
+		</comps>
+	</ThingDef>
+
+<!-- Panel Traps ////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <ThingDef ParentName="BuildingElectricPanelTrapBase">
+    <defName>TrapArrowPanel</defName>
+    <label>arrow panel trap</label>
+    <description>.</description>
+    <thingClass>CombinationTraps.Building_TrapArrowPanel</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/PanelTraps/ArrowPanelArmed</texPath>
+    </graphicData>
+    <soundDrop>InteractRifle</soundDrop>
+    <soundPickup>InteractRifle</soundPickup>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+    </statBases>
+    <costList>
+      	<Steel>10</Steel>
+    </costList>
+    <comps>
+		<li Class="CompProperties_Power">
+	        <compClass>CompPowerTrader</compClass>
+        	<basePowerConsumption>10</basePowerConsumption>
+			<shortCircuitInRain>false</shortCircuitInRain>
+	    </li>
+	</comps>
+	<building>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/PanelTraps/ArrowPanelUnarmed</texPath>
+      </trapUnarmedGraphicData>
+    </building>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingElectricPanelTrapBase">
+    <defName>TrapAccelerationPanel</defName>
+    <label>acceleration trap</label>
+    <description>.</description>
+    <thingClass>CombinationTraps.Building_TrapArrowPanel</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/PanelTraps/AccelerationPanelArmed</texPath>
+    </graphicData>
+    <soundDrop>InteractRifle</soundDrop>
+    <soundPickup>InteractRifle</soundPickup>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <ImpactForce>5</ImpactForce>
+      <Momentum>0.1</Momentum>
+      <RearmInterval>1</RearmInterval>
+    </statBases>
+    <costList>
+      	<Steel>20</Steel>
+    </costList>
+    <comps>
+		<li Class="CompProperties_Power">
+	        <compClass>CompPowerTrader</compClass>
+        	<basePowerConsumption>20</basePowerConsumption>
+			<shortCircuitInRain>false</shortCircuitInRain>
+	    </li>
+	</comps>
+	<building>
+      <trapDamageCategory>Blunt</trapDamageCategory>
+      <trapUnarmedGraphicData>
+        <texPath>Things/Building/Security/PanelTraps/AccelerationPanelUnarmed</texPath>
       </trapUnarmedGraphicData>
     </building>
   </ThingDef>
 
-
-<!-- Misc //////////////////////////////////////////// -->
-  <ThingDef ParentName="BuildingCombinationTrapBase">
-    <defName>TrapArrowPanel</defName>
-    <label>arrow panel trap</label>
-    <description>ぶっとぶ方向が変わる.</description>
-    <thingClass>CombinationTraps.Building_TrapArrowPanel</thingClass>
-    <graphicData>
-      <texPath>Things/Building/Security/ArrowPanel</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <damageData>
-        <rect>(0,0,1,0.15)</rect>
-      </damageData>
-    </graphicData>
-    <statBases>
-      <MaxHitPoints>40</MaxHitPoints>
-      <WorkToBuild>2000</WorkToBuild>
-      <Beauty>-4</Beauty>
-      <TrapMeleeDamage>0</TrapMeleeDamage>
-      <TrapSpringChance>1</TrapSpringChance>
-    </statBases>
-    <stuffCategories>
-      <li>Metallic</li>
-      <li>Woody</li>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>70</costStuffCount>
-    <building>
-      <isTrap>true</isTrap>
-      <trapDamageCategory>Blunt</trapDamageCategory>
-    </building>
-  </ThingDef>
 
 </Defs>

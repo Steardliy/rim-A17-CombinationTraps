@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TrapRange.label>trap range</TrapRange.label>
+  <TrapRange.description>.</TrapRange.description>
+
+  <Momentum.label>momentum</Momentum.label>
+  <Momentum.description>.</Momentum.description>
+
+  <ImpactForce.label>impact force</ImpactForce.label>
+  <ImpactForce.description>.</ImpactForce.description>
+
+  <RearmInterval.label>rearm interval</RearmInterval.label>
+  <RearmInterval.description>.</RearmInterval.description>
+
+
+</LanguageData>

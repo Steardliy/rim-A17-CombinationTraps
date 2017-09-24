@@ -3,8 +3,9 @@
 	<DamageDef Name="ForceDamageBase" Abstract="True">
 	    <externalViolence>true</externalViolence>
 	    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-	    <harmsHealth>true</harmsHealth>
+	    <harmsHealth>false</harmsHealth>
 	    <hasChanceToAdditionallyDamageInnerSolidParts>true</hasChanceToAdditionallyDamageInnerSolidParts>
+    	<makesBlood>false</makesBlood>
 	</DamageDef>
 
 	<DamageDef ParentName="ForceDamageBase">

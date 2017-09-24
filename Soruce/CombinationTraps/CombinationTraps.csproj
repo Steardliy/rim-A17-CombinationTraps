@@ -56,15 +56,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buildings\Building_TrapArrowPanel.cs" />
+    <Compile Include="Buildings\Building_TrapExtensiveRange.cs" />
     <Compile Include="Buildings\Building_TrapRange.cs" />
     <Compile Include="Buildings\Building_TrapPuller.cs" />
     <Compile Include="Buildings\Building_TrapPusher.cs" />
+    <Compile Include="Buildings\Building_TrapElectricRearmable.cs" />
+    <Compile Include="Comps\CompSignal.cs" />
+    <Compile Include="Comps\CompProperties_Signal.cs" />
+    <Compile Include="Comps\CompSignalTrap.cs" />
+    <Compile Include="Comps\SignalBehavior\SignalBehavior.cs" />
+    <Compile Include="Comps\SignalBehavior\SignalBehavior_Delay.cs" />
+    <Compile Include="Comps\SignalBehavior\SignalBehavior_LastDelay.cs" />
     <Compile Include="Debug\DebugLog.cs" />
     <Compile Include="Harmony\HarmonyPatches.cs" />
-    <Compile Include="Harmony\Override_PreDrawPosCalculation.cs" />
     <Compile Include="Hediffs\Hediff_ForceOutside.cs" />
-    <Compile Include="Misc\CT_DefOf.cs" />
+    <Compile Include="Misc\BehaviorCommandsUtility.cs" />
+    <Compile Include="Misc\Command_ActionHalf.cs" />
+    <Compile Include="DefOf\CT_DefOf.cs" />
     <Compile Include="Buildings\PlaceWorkers\PlaceWorker_WallTrap.cs" />
+    <Compile Include="DefOf\CT_TextureOf.cs" />
+    <Compile Include="Misc\StatWorker_CombinationTrapForce.cs" />
     <Compile Include="Misc\Vec3Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -21,9 +21,9 @@ namespace CombinationTraps
             StackFrame stack = new StackFrame(stackcount);
             return stack.GetMethod().ReflectedType.FullName + "." + stack.GetMethod().Name + "(): ";
         }
-        public static string Sign()
+        public static string Sign(int stackcount = 1)
         {
-            return "[" + typeof(DebugLog).Namespace + "]:";
+            return "[" + typeof(DebugLog).Namespace + "] :" + GetMethodName(stackcount);
         }
     }
 }

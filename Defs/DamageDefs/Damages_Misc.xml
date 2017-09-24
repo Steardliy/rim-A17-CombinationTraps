@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<DamageDef>
+	    <defName>Anesthetic</defName>
+	    <label>anesthetic</label>
+	    <externalViolence>true</externalViolence>
+	    <workerClass>DamageWorker_AddGlobal</workerClass>
+	    <isExplosive>true</isExplosive>
+	    <makesBlood>false</makesBlood>
+	    <deathMessage>{0} has died in an explosion.</deathMessage>
+	    <hediff>Anesthetic</hediff>
+	    <explosionDamage>800</explosionDamage>
+	    <explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
+	    <explosionColorCenter>(0, 0.55, 1.0)</explosionColorCenter>
+	    <explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
+	    <harmsHealth>false</harmsHealth>
+	    <soundExplosion>Explosion_Smoke</soundExplosion>
+  	</DamageDef>
+	
+</Defs>

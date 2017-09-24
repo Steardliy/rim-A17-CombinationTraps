@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Pull.label>pulll</Pull.label>
+  <Pull.deathMessage>{0} has been beaten to death.</Pull.deathMessage>
+
+  <Push.label>push</Push.label>
+  <Push.deathMessage>{0} has been beaten to death.</Push.deathMessage>
+
+
+</LanguageData>

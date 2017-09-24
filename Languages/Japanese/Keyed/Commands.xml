@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<LabelTransmissionStance_Any>送受信</LabelTransmissionStance_Any>
+	<LabelTransmissionStance_ShutDown>遮断</LabelTransmissionStance_ShutDown>
+	<LabelTransmissionStance_OnlyReceive>受信</LabelTransmissionStance_OnlyReceive>
+	<LabelTransmissionStance_OnlyTransmit>送信</LabelTransmissionStance_OnlyTransmit>
+
+	<DescTransmissionStance_Any>信号の送受信を全て許可する。通信は同じ電線ネットワークに接続している装置同士で行われる。</DescTransmissionStance_Any>
+	<DescTransmissionStance_ShutDown>信号の送受信を一切行わない。通信は同じ電線ネットワークに接続している装置同士で行われる。</DescTransmissionStance_ShutDown>
+	<DescTransmissionStance_OnlyReceive>信号の受信のみを行い、自身からは一切信号を発しない。</DescTransmissionStance_OnlyReceive>
+	<DescTransmissionStance_OnlyTransmit>信号の発信のみを行い、他からの信号を無視する。</DescTransmissionStance_OnlyTransmit>
+	
+	
+	
+	<LabelSignalBehavior_Delay>遅延</LabelSignalBehavior_Delay>
+	<DescSignalBehavior_Delay>信号を受信した際の動作。最初の信号を受信してから一定時間が経過後に起動する。</DescSignalBehavior_Delay>
+	
+	<LabelSignalBehavior_LastDelay>最新遅延</LabelSignalBehavior_LastDelay>
+	<DescSignalBehavior_LastDelay>信号を受信した際の動作。最後に信号を受信してから一定時間が経過するまで信号を受信しなかった場合に起動する。</DescSignalBehavior_LastDelay>
+	
+	
+	<LabelParameterAdd>+</LabelParameterAdd>
+	<DescParameterAdd>現在有効になっている動作に数値を加算する。</DescParameterAdd>
+	
+	<LabelParameterReset>Reset</LabelParameterReset>
+	<DescParameterReset>現在有効になっている動作の数値を初期化する。</DescParameterReset>
+	
+	<LabelParameterSub>-</LabelParameterSub>
+	<DescParameterSub>現在有効になっている動作から数値を減算する。</DescParameterSub>
+
+</LanguageData>

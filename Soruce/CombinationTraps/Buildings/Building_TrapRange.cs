@@ -7,10 +7,11 @@ using Verse;
 
 namespace CombinationTraps
 {
-    public abstract class Building_TrapRange : Building_TrapRearmable
+    public class Building_TrapRangeBase : Building_TrapElectricRearmable
     {
-        private int inspectRange;
-        protected abstract DamageDef dDef { get; }
+        private const float DistanceCorrectionFactor = 0.01f;
+        protected int inspectRange;
+        protected virtual DamageDef dDef { get; }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -20,39 +21,32 @@ namespace CombinationTraps
 
         public override void Tick()
         {
+            if (!this.IsActive) { return; }
+
             base.Tick();
             if (this.Armed)
             {
-                /*FieldInfo touchInfo = typeof(Building_Trap).GetField("touchingPawns", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
-                List<Pawn> pList = (List<Pawn>)touchInfo.GetValue(this);*/
-
-                for(int i = 1; i < this.inspectRange; i++)
+                for (int i = 1; i < this.inspectRange; i++)
                 {
                     IntVec3 pos = base.Position + base.Rotation.FacingCell * i;
-                    this.PawnsAt(pos);
-                    //pList.AddRange(this.PawnsAt(pos));
+                    if (!pos.CanBeSeenOver(base.Map))
+                    {
+                        break;
+                    }
+                    List<Thing> thingList = pos.GetThingList(base.Map);
+                    for (int j = 0; j < thingList.Count; j++)
+                    {
+                        Pawn pawn = thingList[j] as Pawn;
+                        if (pawn != null)
+                        {
+                            this.CheckSpringRange(pawn, i);
+                        }
+                    }
                 }
             }
         }
-        protected override float SpringChance(Pawn p)
-        {
-            return Mathf.Clamp01(this.GetStatValue(StatDefOf.TrapSpringChance, true));
-        }
-        protected override void SpringSub(Pawn p)
-        {
-            FieldInfo armedInfo = typeof(Building_TrapRearmable).GetField("armedInt", BindingFlags.SetField | BindingFlags.Instance | BindingFlags.NonPublic);
-            armedInfo.SetValue(this, false);
-            if (p != null)
-            {
-                this.DamagePawn(p);
-            }
-            FieldInfo autoInfo = typeof(Building_TrapRearmable).GetField("autoRearm", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
-            if ((bool)autoInfo.GetValue(this))
-            {
-                base.Map.designationManager.AddDesignation(new Designation(this, DesignationDefOf.RearmTrap));
-            }
-        }
-        protected virtual void DamagePawn(Pawn p)
+
+        protected override void DamagePawn(Pawn p)
         {
             BodyPartHeight height = (Rand.Value >= 0.666f) ? BodyPartHeight.Middle : BodyPartHeight.Top;
             int num = Mathf.RoundToInt(this.GetStatValue(StatDefOf.TrapMeleeDamage, true));
@@ -62,39 +56,24 @@ namespace CombinationTraps
 
             p.TakeDamage(dinfo);
         }
-        protected void CheckSpring(Pawn p)
+        protected void CheckSpringRange(Pawn p, int dist)
         {
-            if (Rand.Value < this.SpringChance(p))
+            if(p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer)
+            {
+                return;
+            }
+            if (Rand.Value < this.DistanceCorrection(this.SpringChance(p), dist))
             {
                 this.Spring(p);
-                if (p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer)
-                {
-                    Find.LetterStack.ReceiveLetter("LetterFriendlyTrapSprungLabel".Translate(new object[]
-                    {
-                        p.NameStringShort
-                    }), "LetterFriendlyTrapSprung".Translate(new object[]
-                    {
-                        p.NameStringShort
-                    }), LetterDefOf.BadNonUrgent, new TargetInfo(base.Position, base.Map, false), null);
-                }
             }
         }
         protected virtual float ActAngle()
         {
             return base.Rotation.AsAngle;
         }
-        private void PawnsAt(IntVec3 pos)
+        private float DistanceCorrection(float chance, int dist)
         {
-            List<Thing> thingList = pos.GetThingList(base.Map);
-            for (int i = 0; i < thingList.Count; i++)
-            {
-                Pawn pawn = thingList[i] as Pawn;
-                if (pawn != null)
-                {
-                    this.CheckSpring(pawn);
-                   // yield return pawn;
-                }
-            }
+            return chance - dist * DistanceCorrectionFactor;
         }
     }
 }

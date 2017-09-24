@@ -16,6 +16,7 @@ namespace CombinationTraps
         public static StatDef ImpactForce;
         public static StatDef Momentum;
         public static StatDef TrapRange;
+        public static StatDef RearmInterval;
     }
 
     [DefOf]

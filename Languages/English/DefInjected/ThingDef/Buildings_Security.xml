@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Wall traps Pusher////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <TrapPusher.label>push trap</TrapPusher.label>
+  <TrapPusher.description>ぶっとぶ。素材で性能が変わる。</TrapPusher.description>
+  <TrapPusher_Blueprint.label>push trap (blueprint)</TrapPusher_Blueprint.label>
+  <TrapPusher_Frame.label>push trap (building)</TrapPusher_Frame.label>
+  <TrapPusher_Frame.description>ぶっとぶ。素材で性能が変わる。</TrapPusher_Frame.description>
+
+  <TrapElectricPusher.label>electric push trap</TrapElectricPusher.label>
+  <TrapElectricPusher.description>電動でぶっとぶ。素材で性能が変わる。自動再装填。</TrapElectricPusher.description>
+  <TrapElectricPusher_Blueprint.label>electric push trap (blueprint)</TrapElectricPusher_Blueprint.label>
+  <TrapElectricPusher_Frame.label>electric push trap (building)</TrapElectricPusher_Frame.label>
+  <TrapElectricPusher_Frame.description>電動でぶっとぶ。素材で性能が変わる。自動再装填。</TrapElectricPusher_Frame.description>
+
+
+  <!-- Wall traps Puller////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <TrapPuller.label>pull trap</TrapPuller.label>
+  <TrapPuller.description>ひっぱる。素材で性能が変わる。</TrapPuller.description>
+  <TrapPuller_Blueprint.label>pull trap (blueprint)</TrapPuller_Blueprint.label>
+  <TrapPuller_Frame.label>pull trap (building)</TrapPuller_Frame.label>
+  <TrapPuller_Frame.description>ひっぱる。素材で性能が変わる。</TrapPuller_Frame.description>
+
+  <TrapElectricPuller.label>electric pull trap</TrapElectricPuller.label>
+  <TrapElectricPuller.description>電動でひっぱる。素材で性能が変わる。自動で再装填される。</TrapElectricPuller.description>
+  <TrapElectricPuller_Blueprint.label>electric pull trap (blueprint)</TrapElectricPuller_Blueprint.label>
+  <TrapElectricPuller_Frame.label>electric pull trap (building)</TrapElectricPuller_Frame.label>
+  <TrapElectricPuller_Frame.description>電動でひっぱる。素材で性能が変わる。自動で再装填される。</TrapElectricPuller_Frame.description>
+
+
+  <!-- Extensive range traps IED////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <TrapCTIEDBomb.label>IED trap</TrapCTIEDBomb.label>
+  <TrapCTIEDBomb.description>A mortar shell connected to a homemade trigger. When someone disturbs the trigger, the shell explodes. The improvised trigger has a random delay that might allow a nimble enemy to escape.</TrapCTIEDBomb.description>
+  <TrapCTIEDBomb_Blueprint.label>IED trap (blueprint)</TrapCTIEDBomb_Blueprint.label>
+  <TrapCTIEDBomb_Frame.label>IED trap (building)</TrapCTIEDBomb_Frame.label>
+  <TrapCTIEDBomb_Frame.description>A mortar shell connected to a homemade trigger. When someone disturbs the trigger, the shell explodes. The improvised trigger has a random delay that might allow a nimble enemy to escape.</TrapCTIEDBomb_Frame.description>
+
+  <TrapCTIEDIncendiary.label>IED incendiary trap</TrapCTIEDIncendiary.label>
+  <TrapCTIEDIncendiary.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDIncendiary.description>
+  <TrapCTIEDIncendiary_Blueprint.label>IED incendiary trap (blueprint)</TrapCTIEDIncendiary_Blueprint.label>
+  <TrapCTIEDIncendiary_Frame.label>IED incendiary trap (building)</TrapCTIEDIncendiary_Frame.label>
+  <TrapCTIEDIncendiary_Frame.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDIncendiary_Frame.description>
+
+  <TrapCTIEDSmoke.label>IED smoke trap</TrapCTIEDSmoke.label>
+  <TrapCTIEDSmoke.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDSmoke.description>
+  <TrapCTIEDSmoke_Blueprint.label>IED smoke trap (blueprint)</TrapCTIEDSmoke_Blueprint.label>
+  <TrapCTIEDSmoke_Frame.label>IED smoke trap (building)</TrapCTIEDSmoke_Frame.label>
+  <TrapCTIEDSmoke_Frame.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDSmoke_Frame.description>
+
+  <TrapCTIEDAnesthetic.label>IED Anesthetic trap</TrapCTIEDAnesthetic.label>
+  <TrapCTIEDAnesthetic.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDAnesthetic.description>
+  <TrapCTIEDAnesthetic_Blueprint.label>IED Anesthetic trap (blueprint)</TrapCTIEDAnesthetic_Blueprint.label>
+  <TrapCTIEDAnesthetic_Frame.label>IED Anesthetic trap (building)</TrapCTIEDAnesthetic_Frame.label>
+  <TrapCTIEDAnesthetic_Frame.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDAnesthetic_Frame.description>
+
+  <TrapCTIEDEMP.label>IED EMP trap</TrapCTIEDEMP.label>
+  <TrapCTIEDEMP.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDEMP.description>
+  <TrapCTIEDEMP_Blueprint.label>IED EMP trap (blueprint)</TrapCTIEDEMP_Blueprint.label>
+  <TrapCTIEDEMP_Frame.label>IED EMP trap (building)</TrapCTIEDEMP_Frame.label>
+  <TrapCTIEDEMP_Frame.description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</TrapCTIEDEMP_Frame.description>
+
+
+  <!-- Panel Traps ////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <TrapArrowPanel.label>arrow panel trap</TrapArrowPanel.label>
+  <TrapArrowPanel.description>ぶっとぶ方向が変わる.</TrapArrowPanel.description>
+  <TrapArrowPanel_Blueprint.label>arrow panel trap (blueprint)</TrapArrowPanel_Blueprint.label>
+  <TrapArrowPanel_Frame.label>arrow panel trap (building)</TrapArrowPanel_Frame.label>
+  <TrapArrowPanel_Frame.description>ぶっとぶ方向が変わる.</TrapArrowPanel_Frame.description>
+
+  <TrapAccelerationPanel.label>acceleration trap</TrapAccelerationPanel.label>
+  <TrapAccelerationPanel.description>加速する.</TrapAccelerationPanel.description>
+  <TrapAccelerationPanel_Blueprint.label>acceleration trap (blueprint)</TrapAccelerationPanel_Blueprint.label>
+  <TrapAccelerationPanel_Frame.label>acceleration trap (building)</TrapAccelerationPanel_Frame.label>
+  <TrapAccelerationPanel_Frame.description>加速する.</TrapAccelerationPanel_Frame.description>
+
+
+</LanguageData>
