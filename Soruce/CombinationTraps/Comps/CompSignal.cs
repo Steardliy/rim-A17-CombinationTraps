@@ -41,7 +41,7 @@ namespace CombinationTraps
         public void TrySpreadSignal(CompPower trriger)
         {
             int num = Find.TickManager.TicksGame;
-            if (this.lastReceivedTick == num || trriger == null || !this.CanTransmitSignal())
+            if (this.lastReceivedTick == num || !this.CanTransmitSignal() || trriger == null || trriger.PowerNet == null)
             {
                 return;
             }
