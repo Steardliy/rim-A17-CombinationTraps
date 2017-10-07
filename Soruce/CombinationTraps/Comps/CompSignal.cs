@@ -7,23 +7,22 @@ using RimWorld;
 
 namespace CombinationTraps
 {
-    public class CompSignal : ThingComp
+    public abstract class CompSignal : ThingComp
     {
-
         protected CompProperties_Signal compDef => (CompProperties_Signal)base.props;
-        protected TransmissionStance currentTransmissionStance = TransmissionStance.Undefined;
-        protected List<SignalBehavior> behaviors = new List<SignalBehavior>();
         protected virtual string TransmitingSignal => "CT_TransmitingSignal";
 
+        private TransmissionStance currentTransmissionStance = TransmissionStance.Undefined;
         private int lastReceivedTick;
+        private List<SignalVerb> verbs = new List<SignalVerb>();
 
-        private int curBehaviorIndex = 0;
-        protected SignalBehavior CurBehavior
+        private int curVerbIndex = 0;
+        protected SignalVerb CurVerb
         {
-            get { return behaviors.ElementAtOrDefault(curBehaviorIndex); }
+            get { return verbs.ElementAtOrDefault(curVerbIndex); }
         }
 
-        public Action SignalCallBack;
+        public abstract IEnumerable<SignalVerb> MakeVerbs();
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
@@ -35,6 +34,18 @@ namespace CombinationTraps
             {
                 Log.Warning(DebugLog.Sign() + "Value of <defaultTransmissionStance> has been filtered.");
                 this.SwitchStance();
+            }
+            foreach(var verb in this.MakeVerbs())
+            {
+                this.verbs.Add(verb);
+            }
+        }
+
+        public override void CompTick()
+        {
+            if (this.CurVerb != default(SignalVerb) && this.CurVerb.ShouldRun)
+            {
+                this.CurVerb.Run();
             }
         }
 
@@ -59,13 +70,28 @@ namespace CombinationTraps
                 this.Transmit();
             }
         }
-        public virtual void Transmit()
+        public void Transmit()
         {
-            SignalCallBack?.Invoke();
+            this.CurVerb?.Triggered();
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
+            SignalVerb verb = this.CurVerb;
+            if(verb != default(SignalVerb))
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = verb.LabelCap,
+                    defaultDesc = verb.Desc,
+                    icon = verb.Texture,
+                    action = this.SwitchVerb
+                };
+                foreach (var gizmo in CurVerb.SignalVerbGizmos())
+                {
+                        yield return gizmo;
+                }
+            }
             yield return new Command_Action
             {
                 defaultLabel = this.currentTransmissionStance.Label(),
@@ -73,27 +99,12 @@ namespace CombinationTraps
                 icon = this.currentTransmissionStance.Texture(),
                 action = this.SwitchStance
             };
-            SignalBehavior behavior = this.CurBehavior;
-            if(behavior != default(SignalBehavior))
-            {
-                yield return new Command_Action
-                {
-                    defaultLabel = behavior.LabelCap,
-                    defaultDesc = behavior.Desc,
-                    icon = behavior.Texture,
-                    action = this.SwitchBehavior
-                };
 
-                foreach(var a in BehaviorCommandsUtility.GetParameterCommand(CurBehavior))
-                {
-                    yield return a;
-                }
-            }
             if (DebugSettings.godMode)
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "Call Transmit",
+                    defaultLabel = "Launch",
                     defaultDesc = "Debug mode",
                     icon = BaseContent.BadTex,
                     action = this.Transmit
@@ -119,21 +130,24 @@ namespace CombinationTraps
             }
             this.currentTransmissionStance = TransmissionStance.Undefined;
         }
-        public void SwitchBehavior()
+        public void SwitchVerb()
         {
-            int num = curBehaviorIndex + 1;
-            this.curBehaviorIndex = num < this.behaviors.Count ? num: 0;
+            SignalVerb preVerb = this.CurVerb;
+            int num = curVerbIndex + 1;
+            this.curVerbIndex = num < this.verbs.Count ? num: 0;
+            preVerb.Notify_Changed(this.CurVerb);
+            this.CurVerb.Reset();
         }
 
-        private bool CanReceiveSignal()
+        protected bool CanReceiveSignal()
         {
             TransmissionStance tm = this.currentTransmissionStance;
-            return tm == TransmissionStance.Any || tm == TransmissionStance.OnlyReceive;
+            return tm == TransmissionStance.Both || tm == TransmissionStance.OnlyReceive;
         }
-        private bool CanTransmitSignal()
+        protected bool CanTransmitSignal()
         {
             TransmissionStance tm = this.currentTransmissionStance;
-            return tm == TransmissionStance.Any || tm == TransmissionStance.OnlyTransmit;
+            return tm == TransmissionStance.Both || tm == TransmissionStance.OnlyTransmit;
         }
     }
 }

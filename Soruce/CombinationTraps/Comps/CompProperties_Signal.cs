@@ -11,21 +11,16 @@ namespace CombinationTraps
     public enum TransmissionStance : int
     {
         Undefined,
-        ShutDown,
+        ShutOut,
         OnlyReceive,
         OnlyTransmit,
-        Any
+        Both
     }
 
     public class CompProperties_Signal : CompProperties
     {
         public TransmissionStance defaultTransmissionStance = TransmissionStance.Undefined;
         public List<TransmissionStance> transmissionStanceFilter = new List<TransmissionStance>();
-
-        public CompProperties_Signal()
-        {
-            base.compClass = typeof(CompSignal);
-        }
     }
 
     static class TransmissionStance_Expansion
@@ -34,46 +29,46 @@ namespace CombinationTraps
         {
             switch (value)
             {
-                case TransmissionStance.Any:
-                    return "LabelTransmissionStance_Any".Translate();
-                case TransmissionStance.ShutDown:
-                    return "LabelTransmissionStance_ShutDown".Translate();
+                case TransmissionStance.Both:
+                    return "StanceBoth".Translate();
+                case TransmissionStance.ShutOut:
+                    return "StanceShutOut".Translate();
                 case TransmissionStance.OnlyReceive:
-                    return "LabelTransmissionStance_OnlyReceive".Translate();
+                    return "StanceReceive".Translate();
                 case TransmissionStance.OnlyTransmit:
-                    return "LabelTransmissionStance_OnlyTransmit".Translate();
+                    return "StanceTransmit".Translate();
                 default:
-                    return "LabelTransmissionStance_Undefined";
+                    return "StanceUndefined";
             }
         }
         public static string Desc(this TransmissionStance value)
         {
             switch (value)
             {
-                case TransmissionStance.Any:
-                    return "DescTransmissionStance_Any".Translate();
-                case TransmissionStance.ShutDown:
-                    return "DescTransmissionStance_ShutDown".Translate();
+                case TransmissionStance.Both:
+                    return "StanceBothDesc".Translate();
+                case TransmissionStance.ShutOut:
+                    return "StanceShutOutDesc".Translate();
                 case TransmissionStance.OnlyReceive:
-                    return "DescTransmissionStance_OnlyReceive".Translate();
+                    return "StanceReceiveDesc".Translate();
                 case TransmissionStance.OnlyTransmit:
-                    return "DescTransmissionStance_OnlyTransmit".Translate();
+                    return "StanceTransmitDesc".Translate();
                 default:
-                    return "DescTransmissionStance_Undefined";
+                    return "StanceUndefined";
             }
         }
         public static Texture2D Texture(this TransmissionStance value)
         {
             switch (value)
             {
-                case TransmissionStance.Any:
-                    return CT_TexCommandOf.TransStance_Any;
-                case TransmissionStance.ShutDown:
-                    return CT_TexCommandOf.TransStance_ShutDown;
+                case TransmissionStance.Both:
+                    return CT_TexCommandOf.TransStance_Both;
+                case TransmissionStance.ShutOut:
+                    return CT_TexCommandOf.TransStance_ShutOut;
                 case TransmissionStance.OnlyReceive:
-                    return CT_TexCommandOf.TransStance_OnlyReceive;
+                    return CT_TexCommandOf.TransStance_Receive;
                 case TransmissionStance.OnlyTransmit:
-                    return CT_TexCommandOf.TransStance_OnlyTransmit;
+                    return CT_TexCommandOf.TransStance_Transmit;
                 default:
                     return BaseContent.BadTex;
             }

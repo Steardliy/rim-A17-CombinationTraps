@@ -10,28 +10,52 @@ namespace CombinationTraps
 {
     public class CompSignalTrap : CompSignal
     {
-        public override void CompTick()
+        public override IEnumerable<SignalVerb> MakeVerbs()
         {
-            if (base.CurBehavior != default(SignalBehavior) && base.CurBehavior.ShouldRun)
+            if (!base.CanTransmitSignal())
             {
-                var trap = base.parent as Building_Trap;
-                trap?.Spring(null);
+                yield break;
             }
-        }
-        public override void PostSpawnSetup(bool respawningAfterLoad)
-        {
-            base.PostSpawnSetup(respawningAfterLoad);
-            if (!base.compDef.transmissionStanceFilter.Contains(TransmissionStance.OnlyReceive)
-                || !base.compDef.transmissionStanceFilter.Contains(TransmissionStance.Any))
+            yield return new SignalVerb_Delay
             {
-                base.behaviors.Add(new SignalBehavior_Delay());
-                base.behaviors.Add(new SignalBehavior_LastDelay());
-            }
-        }
+                action = () =>
+                {
+                    var trap = base.parent as Building_Trap;
+                    trap?.Spring(null);
+                },
+                label = "DelayedLaunch".Translate(),
+                desc = "DelayedLaunchDesc".Translate(),
+                texture = CT_TexCommandOf.SignalVerb_DelayedLaunch
+            };
 
-        public override void Transmit()
-        {
-            base.CurBehavior?.Triggered();
+            yield return new SignalVerb_DelayUpdated
+            {
+                action = () =>
+                {
+                    var trap = base.parent as Building_Trap;
+                    trap?.Spring(null);
+                },
+                label = "DelayedLaunchUpdated".Translate(),
+                desc = "DelayedLaunchUpdatedDesc".Translate(),
+                texture = CT_TexCommandOf.SignalVerb_DelayedLaunchUpdated
+            };
+
+            yield return new SignalVerb_Delay
+            {
+                action = () =>
+                {
+                    var trap = base.parent as IValidTrap;
+                    if (trap != null) { trap.IsValid = true; }
+                },
+                triggeredSub = () =>
+                {
+                    var trap = base.parent as IValidTrap;
+                    if (trap != null) { trap.IsValid = false; }
+                },
+                label = "Suppression".Translate(),
+                desc = "SuppressionDesc".Translate(),
+                texture = CT_TexCommandOf.SignalVerb_Suppression
+            };
         }
     }
 }

@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buildings\Building_TrapArrowPanel.cs" />
+    <Compile Include="Buildings\IValidTrap.cs" />
     <Compile Include="Buildings\Building_TrapExtensiveRange.cs" />
     <Compile Include="Buildings\Building_TrapRange.cs" />
     <Compile Include="Buildings\Building_TrapPuller.cs" />
@@ -64,14 +65,15 @@
     <Compile Include="Comps\CompSignal.cs" />
     <Compile Include="Comps\CompProperties_Signal.cs" />
     <Compile Include="Comps\CompSignalTrap.cs" />
-    <Compile Include="Comps\SignalBehavior\SignalBehavior.cs" />
-    <Compile Include="Comps\SignalBehavior\SignalBehavior_Delay.cs" />
-    <Compile Include="Comps\SignalBehavior\SignalBehavior_LastDelay.cs" />
+    <Compile Include="Comps\SignalVerbs\SignalVerb.cs" />
+    <Compile Include="Comps\SignalVerbs\SignalVerbBar.cs" />
+    <Compile Include="Comps\SignalVerbs\SignalVerb_Delay.cs" />
+    <Compile Include="Comps\SignalVerbs\SignalVerb_DelayUpdated.cs" />
     <Compile Include="Debug\DebugLog.cs" />
     <Compile Include="Harmony\HarmonyPatches.cs" />
     <Compile Include="Hediffs\Hediff_ForceOutside.cs" />
-    <Compile Include="Misc\BehaviorCommandsUtility.cs" />
-    <Compile Include="Misc\Command_ActionHalf.cs" />
+    <Compile Include="Misc\GizmoStatus.cs" />
+    <Compile Include="Misc\GizmoStatus_Bar.cs" />
     <Compile Include="DefOf\CT_DefOf.cs" />
     <Compile Include="Buildings\PlaceWorkers\PlaceWorker_WallTrap.cs" />
     <Compile Include="DefOf\CT_TextureOf.cs" />

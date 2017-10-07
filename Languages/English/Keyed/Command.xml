@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+
+  <StanceBoth>both</StanceBoth>
+  <StanceBothDesc>.</StanceBothDesc>
+  
+  <StanceShutOut>shut out</StanceShutOut>
+  <StanceShutOutDesc>.</StanceShutOutDesc>
+  
+  <StanceReceive>receive</StanceReceive>
+  <StanceReceiveDesc>.</StanceReceiveDesc>
+  
+  <StanceTransmit>transmit</StanceTransmit>
+  <StanceTransmitDesc>.</StanceTransmitDesc>
+
+
+
+  <DelayedLaunch>delayed launch</DelayedLaunch>
+  <DelayedLaunchDesc>.</DelayedLaunchDesc>
+  
+  <DelayedLaunchUpdated>delayed launch updated</DelayedLaunchUpdated>
+  <DelayedLaunchUpdatedDesc>.</DelayedLaunchUpdatedDesc>
+  
+  <Suppression>suppression</Suppression>
+  <SuppressionDesc>.</SuppressionDesc>
+  
+  <Reverse>reverse</Reverse>
+  <ReverseDesc>.</ReverseDesc>
+</LanguageData>

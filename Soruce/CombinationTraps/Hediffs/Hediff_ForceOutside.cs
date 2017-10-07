@@ -41,7 +41,7 @@ namespace CombinationTraps
             set
             {
                 base.severityInt = Mathf.Clamp(value, CT_StatDefOf.ImpactForce.minValue, CT_StatDefOf.ImpactForce.maxValue);
-                this.RestrictPawnBehavior();
+                this.RestrictPawnVerb();
             }
         }
         protected virtual bool ShouldDoTick => Find.TickManager.TicksGame % this.tickInterval == 0;
@@ -73,7 +73,7 @@ namespace CombinationTraps
             {
                 return;
             }
-            if (this.IsBlockedByAny())
+            if (this.IsBlockedByBoth())
             {
                 base.severityInt = 0;
                 return;
@@ -95,7 +95,7 @@ namespace CombinationTraps
             }
         }
 
-        private bool IsBlockedByAny()
+        private bool IsBlockedByBoth()
         {
             IntVec3 vec = base.pawn.Position + this.Direction;
             Map map = base.pawn.Map;
@@ -120,7 +120,7 @@ namespace CombinationTraps
         {
             this.DrawPosTightness = this.Momentum * Hediff_ForceOutside.SpringTightnessCoefficient;
         }
-        private void RestrictPawnBehavior()
+        private void RestrictPawnVerb()
         {
             Pawn p = base.pawn;
 

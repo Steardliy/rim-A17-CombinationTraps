@@ -10,7 +10,7 @@ using Harmony;
 
 namespace CombinationTraps
 {
-    public class Building_TrapElectricRearmable : Building_TrapRearmable
+    public class Building_TrapElectricRearmable : Building_TrapRearmable, IValidTrap
     {
         protected CompPowerTrader powerTraderComp;
         protected CompSignalTrap trapSignalComp;
@@ -31,10 +31,6 @@ namespace CombinationTraps
             base.SpawnSetup(map, respawningAfterLoad);
             this.IsValid = true;
             this.trapSignalComp = base.GetComp<CompSignalTrap>();
-            if (this.trapSignalComp != null)
-            {
-                //this.trapSignalComp.SignalCallBack = () => Log.Message("Transmit pos=" + base.Position);
-            }
             this.powerTraderComp = base.GetComp<CompPowerTrader>();
             if (this.powerTraderComp != null)
             {

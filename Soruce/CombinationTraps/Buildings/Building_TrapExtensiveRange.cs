@@ -7,7 +7,7 @@ using RimWorld;
 
 namespace CombinationTraps
 {
-    class Building_TrapExtensiveRange : Building_TrapExplosive
+    class Building_TrapExtensiveRange : Building_TrapExplosive, IValidTrap
     {
         protected CompPowerTrader powerTraderComp;
         protected CompSignalTrap trapSignalComp;

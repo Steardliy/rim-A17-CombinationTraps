@@ -14,6 +14,7 @@
 	
 <!-- Wall traps Base////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<ThingDef Name="BuildingWallTrapBase" ParentName="BuildingCombinationTrapBase" Abstract="True">
+		<drawerType>MapMeshAndRealTime</drawerType>
     	<rotatable>true</rotatable>
     	<placeWorkers>
 			<li>CombinationTraps.PlaceWorker_WallTrap</li>
@@ -21,6 +22,7 @@
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<graphicData>
 			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2, 2)</drawSize>
 	      	<damageData>
 	        	<rect>(0,0,1,0.15)</rect>
 	      	</damageData>
@@ -50,6 +52,7 @@
     <graphicData>
       <texPath>Things/Building/Security/WallTraps/PusherArmed</texPath>
     </graphicData>
+    <uiIconPath>Things/Building/Security/WallTraps/Pusher_MenuIcon</uiIconPath>
     <soundDrop>InteractRifle</soundDrop>
     <soundPickup>InteractRifle</soundPickup>
     <statBases>
@@ -83,6 +86,7 @@
     <graphicData>
       <texPath>Things/Building/Security/WallTraps/ElectricPusherArmed</texPath>
     </graphicData>
+    <uiIconPath>Things/Building/Security/WallTraps/ElectricPusher_MenuIcon</uiIconPath>
     <soundDrop>InteractRifle</soundDrop>
     <soundPickup>InteractRifle</soundPickup>
     <statBases>
@@ -114,10 +118,10 @@
 	    </li>
 	    <li Class="CombinationTraps.CompProperties_Signal">
 	    	<compClass>CombinationTraps.CompSignalTrap</compClass>
-	    	<defaultTransmissionStance>ShutDown</defaultTransmissionStance>
+	    	<defaultTransmissionStance>ShutOut</defaultTransmissionStance>
 	    	<transmissionStanceFilter>
 	    		<li>OnlyReceive</li>
-	    		<li>Any</li>
+	    		<li>Both</li>
 	    	</transmissionStanceFilter>
 	    </li>
 	</comps>
@@ -133,6 +137,7 @@
     <graphicData>
       <texPath>Things/Building/Security/WallTraps/PullerArmed</texPath>
     </graphicData>
+    <uiIconPath>Things/Building/Security/WallTraps/Puller_MenuIcon</uiIconPath>
     <soundDrop>InteractRifle</soundDrop>
     <soundPickup>InteractRifle</soundPickup>
     <statBases>
@@ -166,6 +171,7 @@
     <graphicData>
       <texPath>Things/Building/Security/WallTraps/ElectricPullerArmed</texPath>
     </graphicData>
+    <uiIconPath>Things/Building/Security/WallTraps/ElectricPuller_MenuIcon</uiIconPath>
     <soundDrop>InteractRifle</soundDrop>
     <soundPickup>InteractRifle</soundPickup>
     <statBases>
@@ -197,10 +203,10 @@
 	    </li>
 	    <li Class="CombinationTraps.CompProperties_Signal">
 	    	<compClass>CombinationTraps.CompSignalTrap</compClass>
-	    	<defaultTransmissionStance>ShutDown</defaultTransmissionStance>
+	    	<defaultTransmissionStance>ShutOut</defaultTransmissionStance>
 	    	<transmissionStanceFilter>
 	    		<li>OnlyReceive</li>
-	    		<li>Any</li>
+	    		<li>Both</li>
 	    	</transmissionStanceFilter>
 	    </li>
 	</comps>
@@ -229,7 +235,7 @@
 		    </li>
 		    <li Class="CombinationTraps.CompProperties_Signal">
 		    	<compClass>CombinationTraps.CompSignalTrap</compClass>
-		    	<defaultTransmissionStance>Any</defaultTransmissionStance>
+		    	<defaultTransmissionStance>Both</defaultTransmissionStance>
 		    </li>
 		</comps>
 	</ThingDef>
@@ -323,7 +329,7 @@
 		        <postExplosionSpawnThingDef>Gas_Smoke</postExplosionSpawnThingDef>
 		        <postExplosionSpawnChance>1</postExplosionSpawnChance>
 		        <postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
-		        <chanceNeverExplodeFromDamage>true</chanceNeverExplodeFromDamage>
+		        <chanceNeverExplodeFromDamage>0.001</chanceNeverExplodeFromDamage>
 		        <wickTicks>
 		          	<min>10</min>
 		          	<max>15</max>
@@ -354,7 +360,7 @@
 		    <li Class="CompProperties_Explosive">
 		      	<explosiveRadius>2.9</explosiveRadius>
 		      	<explosiveDamageType>Anesthetic</explosiveDamageType>
-		        <chanceNeverExplodeFromDamage>true</chanceNeverExplodeFromDamage>
+		        <chanceNeverExplodeFromDamage>0.001</chanceNeverExplodeFromDamage>
 		        <wickTicks>
 		          	<min>10</min>
 		          	<max>15</max>
@@ -386,7 +392,7 @@
 		    <li Class="CompProperties_Explosive">
 		      	<explosiveRadius>2.9</explosiveRadius>
 		      	<explosiveDamageType>EMP</explosiveDamageType>
-		        <chanceNeverExplodeFromDamage>true</chanceNeverExplodeFromDamage>
+		        <chanceNeverExplodeFromDamage>0.001</chanceNeverExplodeFromDamage>
 		        <wickTicks>
 		          	<min>10</min>
 		          	<max>15</max>
@@ -421,10 +427,10 @@
 		<comps>
 	    	<li Class="CombinationTraps.CompProperties_Signal">
 		    	<compClass>CombinationTraps.CompSignalTrap</compClass>
-		    	<defaultTransmissionStance>ShutDown</defaultTransmissionStance>
+		    	<defaultTransmissionStance>ShutOut</defaultTransmissionStance>
 		    	<transmissionStanceFilter>
 		    		<li>OnlyTransmit</li>
-		    		<li>Any</li>
+		    		<li>Both</li>
 		    	</transmissionStanceFilter>
 		    </li>
 		</comps>

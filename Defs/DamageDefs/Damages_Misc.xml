@@ -9,7 +9,7 @@
 	    <makesBlood>false</makesBlood>
 	    <deathMessage>{0} has died in an explosion.</deathMessage>
 	    <hediff>Anesthetic</hediff>
-	    <explosionDamage>800</explosionDamage>
+	    <explosionDamage>1</explosionDamage>
 	    <explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
 	    <explosionColorCenter>(0, 0.55, 1.0)</explosionColorCenter>
 	    <explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
